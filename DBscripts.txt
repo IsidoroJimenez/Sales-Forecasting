@@ -1,7 +1,7 @@
 # DB Scripts
 
 # Table Orders
-CREATE TABLE dbo.OrdersPrueba(
+CREATE TABLE dbo.Orders(
 	Id int NOT NULL IDENTITY(1,1),
 	OrderId varchar(255) NOT NULL PRIMARY KEY,
 	OrderDate datetime NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE dbo.OrdersPrueba(
 )
 
 # Table Products
-CREATE TABLE dbo.ProductsPrueba(
+CREATE TABLE dbo.Products(
 	Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	OrderId varchar(255) NOT NULL,
 	ProductId varchar(255) NULL,
@@ -34,7 +34,7 @@ CREATE TABLE dbo.ProductsPrueba(
 )
 
 # Table OrderReturns
-CREATE TABLE dbo.OrdersReturnsPrueba(
+CREATE TABLE dbo.OrdersReturns(
 	Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	OrderId varchar(255) NOT NULL,
 	Comments varchar(255) NULL,
