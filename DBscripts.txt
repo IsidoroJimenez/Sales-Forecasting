@@ -1,7 +1,7 @@
 # DB Scripts
 
 # Table Orders
-CREATE TABLE dbo.Orders(
+CREATE TABLE dbo.OrdersPrueba(
 	Id int NOT NULL IDENTITY(1,1),
 	OrderId varchar(255) NOT NULL PRIMARY KEY,
 	OrderDate datetime NOT NULL,
@@ -14,11 +14,11 @@ CREATE TABLE dbo.Orders(
 	City varchar(255) NULL,
 	[State] varchar(255) NOT NULL,
 	[Postal Code] float NULL,
-	Region varchar(255) NULL,
+	Region varchar(255) NULL
 )
 
 # Table Products
-CREATE TABLE dbo.Products(
+CREATE TABLE dbo.ProductsPrueba(
 	Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	OrderId varchar(255) NOT NULL,
 	ProductId varchar(255) NULL,
@@ -29,13 +29,15 @@ CREATE TABLE dbo.Products(
 	Quantity float NULL,
 	Discount float NULL,
 	Profit float NULL,
-	FOREIGN KEY(OrderId) REFERENCES OrdersPrueba(OrderId)
+	CONSTRAINT fk_products_orderId FOREIGN KEY(OrderId) REFERENCES OrdersPrueba(OrderId)
+	ON DELETE CASCADE
 )
 
 # Table OrderReturns
-CREATE TABLE dbo.OrdersReturns(
+CREATE TABLE dbo.OrdersReturnsPrueba(
 	Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	OrderId varchar(255) NOT NULL,
 	Comments varchar(255) NULL,
-	FOREIGN KEY(OrderId) REFERENCES OrdersPrueba(OrderId)
+	CONSTRAINT fk_returns_orderId FOREIGN KEY(OrderId) REFERENCES OrdersPrueba(OrderId)
+	ON DELETE CASCADE
 )
