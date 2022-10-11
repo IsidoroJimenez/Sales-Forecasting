@@ -1,0 +1,41 @@
+# DB Scripts
+
+# Table Orders
+CREATE TABLE dbo.Orders(
+	Id int NOT NULL IDENTITY(1,1),
+	OrderId varchar(255) NOT NULL PRIMARY KEY,
+	OrderDate datetime NOT NULL,
+	ShipDate datetime NULL,
+	ShipMode varchar(255) NULL,
+	CustomerId varchar(255) NULL,
+	CustomerName varchar(255) NULL,
+	Segment varchar(255) NULL,
+	Country varchar(255) NULL,
+	City varchar(255) NULL,
+	[State] varchar(255) NOT NULL,
+	[Postal Code] float NULL,
+	Region varchar(255) NULL,
+)
+
+# Table Products
+CREATE TABLE dbo.Products(
+	Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	OrderId varchar(255) NOT NULL,
+	ProductId varchar(255) NULL,
+	Category varchar(255) NULL,
+	SubCategory varchar(255) NULL,
+	ProductName varchar(255) NULL,
+	Sales float NOT NULL,
+	Quantity float NULL,
+	Discount float NULL,
+	Profit float NULL,
+	FOREIGN KEY(OrderId) REFERENCES OrdersPrueba(OrderId)
+)
+
+# Table OrderReturns
+CREATE TABLE dbo.OrdersReturns(
+	Id int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	OrderId varchar(255) NOT NULL,
+	Comments varchar(255) NULL,
+	FOREIGN KEY(OrderId) REFERENCES OrdersPrueba(OrderId)
+)
