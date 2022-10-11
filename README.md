@@ -1,8 +1,8 @@
 # Sales-Forecasting
 
 # Technology used
-Project developed in WinForms .NET 4.7.2
-Database used: SQL SERVER 2016 for better compatibility.
+- Project developed in WinForms .NET 4.7.2
+- Database used: SQL SERVER 2016 for better compatibility.
 
 # How to use
 1. Download the code from GitHub repository as .ZIP file.
