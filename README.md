@@ -2,7 +2,7 @@
 
 # Technology used
 - Project developed in WinForms .NET 4.7.2
-- Database used: SQL SERVER
+- Database used: SQL Server 2019
 - Library for charts: LiveCharts: https://lvcharts.net/
 - Library for exports CSV CsvHelper: https://joshclose.github.io/CsvHelper/
 
