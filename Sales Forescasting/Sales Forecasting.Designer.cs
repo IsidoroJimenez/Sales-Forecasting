@@ -423,7 +423,7 @@
             this.MinimumSize = new System.Drawing.Size(1100, 800);
             this.Name = "SalesForescasting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sales Forescating";
+            this.Text = "Sales Forecasting";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
