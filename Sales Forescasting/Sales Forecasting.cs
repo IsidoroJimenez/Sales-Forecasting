@@ -87,26 +87,34 @@ namespace Sales_Forescasting
         //on button download data click
         private void BtnDownloadData_Click(object sender, EventArgs e)
         {
-            //path to download csv
-            string path = SelectDownloadPath();
-            if (path != "-1")
+            //if binding source has data
+            if(bsSalesByState.Count > 0)
             {
-                //get data from bs
-                var records = new List<ForecastedDataExport>();
-                foreach (ForecastedData fd in bsSalesByState)
+                //path to download csv
+                string path = SelectDownloadPath();
+                if (path != "-1")
                 {
-                    ForecastedDataExport dataToWrite = new ForecastedDataExport(fd.State, fd.PercentageIncrease, fd.PredictedSales);
-                    records.Add(dataToWrite);
+                    //get data from bs
+                    var records = new List<ForecastedDataExport>();
+                    foreach (ForecastedData fd in bsSalesByState)
+                    {
+                        ForecastedDataExport dataToWrite = new ForecastedDataExport(fd.State, fd.PercentageIncrease, fd.PredictedSales);
+                        records.Add(dataToWrite);
+                    }
+                    //write in csv
+                    using (var writer = new StreamWriter(path))
+                    using (var csv = new CsvWriter(writer, CultureInfo.CurrentCulture))
+                    {
+                        Cursor.Current = Cursors.WaitCursor;
+                        csv.WriteRecords(records);
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show("Data downloaded");
+                    }
                 }
-                //write in csv
-                using (var writer = new StreamWriter(path))
-                using (var csv = new CsvWriter(writer, CultureInfo.CurrentCulture))
-                {
-                    Cursor.Current = Cursors.WaitCursor;
-                    csv.WriteRecords(records);
-                    Cursor.Current = Cursors.Default;
-                    MessageBox.Show("Data downloaded");
-                }
+            }
+            else
+            {
+                MessageBox.Show("No data to export");
             }
         }
 
